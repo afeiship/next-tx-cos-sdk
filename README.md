@@ -44,7 +44,7 @@ nxCos.get().then((res) => {
 //delete
 nxCos
   .del({
-    Bucket: 'img1-1301823685',
+    Bucket: 'img1-xxx',
     Region: 'ap-chengdu'
   })
   .catch((err) => {
