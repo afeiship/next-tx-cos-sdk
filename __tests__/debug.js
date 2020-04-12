@@ -2,11 +2,10 @@ var nx = require('@feizheng/next-js-core2');
 var NxTxCosSdk = require('../src/next-tx-cos-sdk');
 var fs = require('fs');
 var globby = require('globby');
-var config = {
-  id: 'xxx',
-  SecretId: 'xxx',
-  SecretKey: 'uuu'
-};
+var config = require('./config.json');
+
+console.log('config:', config);
+
 
 // https://console.cloud.tencent.com/cos5/bucket
 var nxCos = new NxTxCosSdk(config);
@@ -73,28 +72,28 @@ var objs = files.map((file) => {
   return { Key: file };
 });
 
-// nxCos.cos.deleteMultipleObject(
-//   {
-//     Bucket: 'img2-1301823685' /* 必须 */,
-//     Region: 'ap-chengdu' /* 必须 */,
-//     Objects: objs
-//   },
-//   function (err, data) {
-//     console.log(err || data);
-//   }
-// );
+nxCos.cos.deleteMultipleObject(
+  {
+    Bucket: 'img2-1301823685' /* 必须 */,
+    Region: 'ap-chengdu' /* 必须 */,
+    Objects: objs
+  },
+  function (err, data) {
+    console.log(err || data);
+  }
+);
 
 // console.log(files);
 
-// files.forEach((file) => {
-//   nxCos.objUpload({
-//     Bucket: 'img2-1301823685' /* 必须 */,
-//     Region: 'ap-chengdu' /* 必须 */,
-//     Key: file /* 必须 */,
-//     StorageClass: 'STANDARD',
-//     Body: fs.createReadStream(`/Users/feizheng/github/qq-group-sharing/dist/${file}`) // 上传文件对象
-//   });
-// });
+files.forEach((file) => {
+  nxCos.objUpload({
+    Bucket: 'img2-1301823685' /* 必须 */,
+    Region: 'ap-chengdu' /* 必须 */,
+    Key: file /* 必须 */,
+    StorageClass: 'STANDARD',
+    Body: fs.createReadStream(`/Users/feizheng/github/qq-group-sharing/dist/${file}`) // 上传文件对象
+  });
+});
 
 // cos.putBucketAcl(
 //   {
