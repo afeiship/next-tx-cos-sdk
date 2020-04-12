@@ -39,6 +39,55 @@
             resolve(data);
           });
         });
+      },
+      /**
+       * 修改 bucket 中的文件权限，public-read 等
+       * @param {*} inOptions
+       */
+      aclPut: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          return self.cos.putBucketAcl(inOptions, function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
+      },
+      /**
+       * 上传文件到 bucket中
+       * @param {*} inOptions
+       */
+      objUpload: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          return self.cos.putObject(inOptions, function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
+      },
+      /**
+       * 删除 bucket 中的文件
+       * @param {*} inOptions
+       */
+      objDelete: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          return self.cos.deleteObject(inOptions, function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
+      },
+      objDeleteMulti: function (inFiles, inOptions) {
+        var self = this;
+        var options = nx.mix({ Bucket: null, Region: 'ap-chengdu', Objects: inFiles }, inOptions);
+        return new Promise(function (resolve, reject) {
+          return self.cos.deleteMultipleObject(options, function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
       }
     }
   });

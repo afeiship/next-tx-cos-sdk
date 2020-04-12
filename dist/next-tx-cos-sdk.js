@@ -2,8 +2,8 @@
  * name: @feizheng/next-tx-cos-sdk
  * description: Tencent cos-nodejs-sdk wrapper.
  * url: https://github.com/afeiship/next-tx-cos-sdk
- * version: 1.0.0
- * date: 2020-04-11 20:29:53
+ * version: 1.1.0
+ * date: 2020-04-12 13:04:09
  * license: MIT
  */
 
@@ -44,6 +44,55 @@
         var self = this;
         return new Promise(function (resolve, reject) {
           return self.cos.getService(function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
+      },
+      /**
+       * 修改 bucket 中的文件权限，public-read 等
+       * @param {*} inOptions
+       */
+      aclPut: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          return self.cos.putBucketAcl(inOptions, function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
+      },
+      /**
+       * 上传文件到 bucket中
+       * @param {*} inOptions
+       */
+      objUpload: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          return self.cos.putObject(inOptions, function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
+      },
+      /**
+       * 删除 bucket 中的文件
+       * @param {*} inOptions
+       */
+      objDelete: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          return self.cos.deleteObject(inOptions, function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
+      },
+      objDeleteMulti: function (inFiles, inOptions) {
+        var self = this;
+        var options = nx.mix({ Bucket: null, Region: 'ap-chengdu', Objects: inFiles }, inOptions);
+        return new Promise(function (resolve, reject) {
+          return self.cos.deleteMultipleObject(options, function (err, data) {
             if (err) return reject(err);
             resolve(data);
           });
