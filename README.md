@@ -28,30 +28,31 @@ const nxCos = new NxTxCosSdk(config);
 
 // create
 nxCos
-  .put({
-    Bucket: 'img2-1301823685',
+  .get({
+    Bucket: 'img3-1301823685',
     Region: 'ap-chengdu'
   })
   .then((res) => {
     console.log(res);
   });
 
-// get
-nxCos.get().then((res) => {
-  console.log(res);
-});
+// // get
+// nxCos.get().then((res) => {
+//   console.log(res);
+// });
 
-//delete
-nxCos
-  .del({
-    Bucket: 'img1-xxx',
-    Region: 'ap-chengdu'
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// //delete
+// nxCos
+//   .del({
+//     Bucket: 'img1-xxx',
+//     Region: 'ap-chengdu'
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 ```
 
 ## resources
 - https://github.com/sindresorhus/pify
 - https://cloud.tencent.com/document/product/436/8629
+- https://cloud.tencent.com/document/product/436/36119

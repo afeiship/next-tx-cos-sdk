@@ -31,7 +31,31 @@
           });
         });
       },
-      get: function () {
+      clear: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          self.objClear(inOptions).then(function () {
+            self
+              .del(inOptions)
+              .then(function (res) {
+                resolve(res);
+              })
+              .catch(function (err) {
+                reject(err);
+              });
+          });
+        });
+      },
+      get: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          return self.cos.getBucket(inOptions, function (err, data) {
+            if (err) return reject(err);
+            resolve(data);
+          });
+        });
+      },
+      list: function () {
         var self = this;
         return new Promise(function (resolve, reject) {
           return self.cos.getService(function (err, data) {
@@ -79,7 +103,21 @@
           });
         });
       },
+      objClear: function (inOptions) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+          self.get(inOptions).then(function (res) {
+            var contents = res.Contents;
+            var objs = contents.map(function (cnt) {
+              return { Key: cnt.Key };
+            });
+            self.objDeleteMulti(objs, inOptions).then(resolve).catch(reject);
+          });
+        });
+      },
       objDeleteMulti: function (inFiles, inOptions) {
+        if (!inFiles || !inFiles.length) return Promise.resolve();
+
         var self = this;
         var options = nx.mix({ Bucket: null, Region: 'ap-chengdu', Objects: inFiles }, inOptions);
         return new Promise(function (resolve, reject) {
