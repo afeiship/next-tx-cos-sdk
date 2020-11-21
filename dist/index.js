@@ -1,6 +1,14 @@
-(function () {
+/*!
+ * name: @jswork/next-tx-cos-sdk
+ * description: Tencent cos-nodejs-sdk wrapper.
+ * homepage: https://github.com/afeiship/next-tx-cos-sdk
+ * version: 1.0.0
+ * date: 2020-11-21 11:10:59
+ * license: MIT
+ */
+
+(function() {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
   var COS = require('cos-nodejs-sdk-v5');
   var DEFAULT_OPTIONS = {
     SecretId: 'COS_SECRETID',

@@ -1,15 +1,5 @@
-/*!
- * name: @feizheng/next-tx-cos-sdk
- * description: Tencent cos-nodejs-sdk wrapper.
- * url: https://github.com/afeiship/next-tx-cos-sdk
- * version: 1.2.0
- * date: 2020-04-23 09:38:43
- * license: MIT
- */
-
-(function () {
+(function() {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
   var COS = require('cos-nodejs-sdk-v5');
   var DEFAULT_OPTIONS = {
     SecretId: 'COS_SECRETID',
@@ -143,5 +133,3 @@
     module.exports = NxTxCosSdk;
   }
 })();
-
-//# sourceMappingURL=next-tx-cos-sdk.js.map

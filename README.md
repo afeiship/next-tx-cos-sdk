@@ -1,9 +1,14 @@
 # next-tx-cos-sdk
 > Tencent cos-nodejs-sdk wrapper.
 
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
+
 ## installation
 ```bash
-npm install -S @feizheng/next-tx-cos-sdk
+npm install -S @jswork/next-tx-cos-sdk
 ```
 
 ## apis
@@ -15,7 +20,7 @@ npm install -S @feizheng/next-tx-cos-sdk
 
 ## usage
 ```js
-import NxTxCosSdk from '@feizheng/next-tx-cos-sdk';
+import NxTxCosSdk from '@jswork/next-tx-cos-sdk';
 
 const config = {
   id: 'xxx',
@@ -56,3 +61,18 @@ nxCos
 - https://github.com/sindresorhus/pify
 - https://cloud.tencent.com/document/product/436/8629
 - https://cloud.tencent.com/document/product/436/36119
+
+## license
+Code released under [the MIT license](https://github.com/afeiship/next-tx-cos-sdk/blob/master/LICENSE.txt).
+
+[version-image]: https://img.shields.io/npm/v/@jswork/next-tx-cos-sdk
+[version-url]: https://npmjs.org/package/@jswork/next-tx-cos-sdk
+
+[license-image]: https://img.shields.io/npm/l/@jswork/next-tx-cos-sdk
+[license-url]: https://github.com/afeiship/next-tx-cos-sdk/blob/master/LICENSE.txt
+
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/next-tx-cos-sdk
+[size-url]: https://github.com/afeiship/next-tx-cos-sdk/blob/master/dist/next-tx-cos-sdk.min.js
+
+[download-image]: https://img.shields.io/npm/dm/@jswork/next-tx-cos-sdk
+[download-url]: https://www.npmjs.com/package/@jswork/next-tx-cos-sdk
