@@ -37,5 +37,12 @@
   },
   "dependencies": {
     "cos-nodejs-sdk-v5": "^2.8.3"
-  }
+  },
+  "keywords": [
+    "next",
+    "tx",
+    "tencent",
+    "cos",
+    "sdk"
+  ]
 }

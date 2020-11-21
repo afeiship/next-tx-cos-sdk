@@ -1,5 +1,6 @@
 (function() {
   var global = global || this || window || Function('return this')();
+  var nx = global.nx || require('@jswork/next');
   var COS = require('cos-nodejs-sdk-v5');
   var DEFAULT_OPTIONS = {
     SecretId: 'COS_SECRETID',
